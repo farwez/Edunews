@@ -1,6 +1,6 @@
 import requests
 import os
-NEWS_API_KEY = os.getenv("NEWS_API_KEYY")
+NEWS_API_KEY = os.getenv("NEWS_API_KEY")
 def get_news(query="technology", page_size=5):
     url = "https://newsapi.org/v2/everything"
     params = {
@@ -26,4 +26,5 @@ def get_news(query="technology", page_size=5):
             "url": a["url"]
         })
     return articles
+
 
