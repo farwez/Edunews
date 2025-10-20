@@ -1,6 +1,6 @@
 import requests
 import os
-from config import GROQ_API_KEY
+
 
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
@@ -27,4 +27,5 @@ def summarize_text(text):
     except (KeyError, IndexError):
         summary = text  # fallback: use original text
     return summary
+
 
