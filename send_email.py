@@ -1,6 +1,7 @@
 import sib_api_v3_sdk
 from sib_api_v3_sdk.rest import ApiException
-from config import BREVO_API_KEY
+import os
+BREVO_API_KEY = os.getenv("BREVO_API_KEY")
 
 def send_email(subject, html_content, receiver_email):
     configuration = sib_api_v3_sdk.Configuration()
@@ -19,3 +20,4 @@ def send_email(subject, html_content, receiver_email):
         print("✅ Email sent successfully!", response)
     except ApiException as e:
         print("❌ Error:", e)
+
