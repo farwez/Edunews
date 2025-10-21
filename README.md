@@ -1,67 +1,102 @@
-# 📰 EduPulse - Daily Tech Digest
+📰 EduPulse Daily Tech Digest
 
-EduPulse is an automated AI-powered newsletter that collects daily news about AI, Electronics (ECE), and Indian Startups, summarizes them using Groq API, and emails a neat HTML digest via Brevo.
+A Python-based automated daily newsletter for personal use that fetches news from NewsAPI, summarizes it using Groq AI, and sends a beautiful HTML email via Brevo API.
 
----
+Features
 
-## 🚀 Features
+Fetches AI/ML, ECE/Science, and Indian Startup news daily
 
-- Fetches latest news using **NewsAPI**
-- Summarizes content using **Groq (Llama 3.1 8B Instant)**
-- Sends daily email using **Brevo API**
-- Automated with **GitHub Actions**
-- Simple, modular Python code
+Summarizes articles with Groq API in 1-2 sentences
 
----
+Sends HTML-formatted newsletter using Brevo (Sendinblue) API
 
-## 📁 Project Structure
+Includes clickable “Read more →” links for each article
 
-fetch_news.py → Fetches articles from NewsAPI
-summarizer.py → Summarizes text using Groq API
-send_email.py → Sends email via Brevo
-daily_digest.py → Combines all and builds daily digest
-templates/email_template.html → Email layout
-.github/workflows/daily_digest.yml → Daily automation
-requirements.txt → Dependencies
+Fully automatable with Windows Task Scheduler or cron
 
----
+📦 Project Structure
+EduPulse/
+│
+├─ fetch_news.py         # Fetch news articles from NewsAPI
+├─ summarizer.py         # Summarize articles using Groq API
+├─ send_email.py         # Send email using Brevo API
+├─ daily_digest.py       # Main script to generate and send digest
+├─ config.py             # Store your API keys
+├─ requirements.txt      # Python dependencies
+└─ templates/
+   └─ email_template.html  # HTML newsletter template
 
-## ⚙️ Setup
+⚡ Prerequisites
 
-1. **Clone this repo**
-   ```bash
-   git clone https://github.com/farwez/edupulse.git
-   cd edupulse
-2.Install dependencies
+Python 3.10+
+
+NewsAPI account + API key
+
+Groq API account + API key
+
+Brevo (Sendinblue) account + API key
+
+Verified sender email in Brevo
+
+🛠 Installation
+
+Clone the repo:
+
+git clone https://github.com/yourusername/EduPulse.git
+cd EduPulse
+
+
+Create a virtual environment and activate it:
+
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1  # Windows PowerShell
+source .venv/bin/activate     # Linux/Mac
+
+
+Install dependencies:
+
 pip install -r requirements.txt
 
-3.Set environment variables
-Create a .env file or add GitHub Secrets:
+⚙️ Configuration
 
-NEWS_API_KEY=your_newsapi_key
-GROQ_API_KEY=your_groq_api_key
-BREVO_API_KEY=your_brevo_api_key
+Create a config.py file with your API keys:
 
-4.Run manually
+NEWS_API_KEY = "your_newsapi_key"
+GROQ_API_KEY = "your_groq_api_key"
+BREVO_API_KEY = "your_brevo_api_key"
+
+
+Also, make sure your sender email is verified in Brevo.
+
+🚀 Run the Digest
 python daily_digest.py
 
-🕓 GitHub Actions (Automation)
-This project runs automatically every day at 11:30 AM IST.
+
+You should receive a daily newsletter in your inbox with AI, ECE, and startup news summaries.
+
+⏰ Automate Daily
+Windows (Task Scheduler)
+
+Program: path\to\python.exe
+
+Arguments: path\to\daily_digest.py
+
+Trigger: Daily at your preferred time
+
+Linux / Mac (cron)
+0 8 * * * /path/to/python /path/to/daily_digest.py
 
 
-on:
-  schedule:
-    - cron: "0 6 * * *"   # 11:30 AM IST
-  workflow_dispatch:
-Secrets (NEWS_API_KEY, GROQ_API_KEY, BREVO_API_KEY) are stored in
-Settings → Secrets → Actions.
+This runs the script every day at 8:00 AM.
 
-💡 Tech Used
-Python 3.11
-Groq API
-NewsAPI
-Brevo
-GitHub Actions
+📌 Notes
 
+Groq API failures fallback to the original article text
 
-❤️❤️❤️❤️❤️
+Empty NewsAPI results are skipped
+
+You can customize the HTML template in templates/email_template.html
+
+🧡 License
+
+Personal use only — feel free to customize for your own projects.
