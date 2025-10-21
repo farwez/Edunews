@@ -29,42 +29,31 @@ EduPulse/
 ⚡ Prerequisites
 
 Python 3.10+
-
 NewsAPI account + API key
-
 Groq API account + API key
-
 Brevo (Sendinblue) account + API key
-
 Verified sender email in Brevo
 
 🛠 Installation
 
 Clone the repo:
-
 git clone https://github.com/yourusername/EduPulse.git
 cd EduPulse
 
-
 Create a virtual environment and activate it:
-
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1  # Windows PowerShell
 source .venv/bin/activate     # Linux/Mac
 
 
 Install dependencies:
-
 pip install -r requirements.txt
 
 ⚙️ Configuration
-
 Create a config.py file with your API keys:
-
 NEWS_API_KEY = "your_newsapi_key"
 GROQ_API_KEY = "your_groq_api_key"
 BREVO_API_KEY = "your_brevo_api_key"
-
 
 Also, make sure your sender email is verified in Brevo.
 
@@ -76,27 +65,18 @@ You should receive a daily newsletter in your inbox with AI, ECE, and startup ne
 
 ⏰ Automate Daily
 Windows (Task Scheduler)
-
 Program: path\to\python.exe
-
 Arguments: path\to\daily_digest.py
-
 Trigger: Daily at your preferred time
-
 Linux / Mac (cron)
 0 8 * * * /path/to/python /path/to/daily_digest.py
 
-
 This runs the script every day at 8:00 AM.
-
 📌 Notes
 
 Groq API failures fallback to the original article text
-
 Empty NewsAPI results are skipped
-
 You can customize the HTML template in templates/email_template.html
 
 🧡 License
-
 Personal use only — feel free to customize for your own projects.
